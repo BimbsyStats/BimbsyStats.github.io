@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oladapo Abimbola — Junior Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #09090f;
+  --surface: #111118;
+  --card:    #16161f;
+  --border:  #22222f;
+  --text:    #f0f0fa;
+  --muted:   #6b6b8a;
+  --accent:  #6366f1;
+  --accent2: #06b6d4;
+  --accent3: #10b981;
+  --yellow:  #f59e0b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(9,9,15,0.9); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 100px 24px 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent3); border: 1px solid rgba(16,185,129,0.3);
+  padding: 6px 16px; border-radius: 20px; background: rgba(16,185,129,0.07);
+  margin-bottom: 24px; animation: fadeUp 0.5s ease both;
+}
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 800; letter-spacing: -2px; line-height: 1.05;
+  margin-bottom: 14px; animation: fadeUp 0.5s ease 0.1s both;
+}
+.hero-name span {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-title { font-size: 1rem; color: var(--muted); margin-bottom: 24px; animation: fadeUp 0.5s ease 0.2s both; }
+.hero-bio {
+  max-width: 540px; font-size: 0.92rem; color: var(--muted);
+  line-height: 1.85; margin-bottom: 36px; animation: fadeUp 0.5s ease 0.3s both;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.5s ease 0.4s both; }
+.btn {
+  padding: 12px 26px; border-radius: 10px; font-size: 0.83rem; font-weight: 600;
+  text-decoration: none; cursor: pointer; transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary { background: linear-gradient(135deg, var(--accent), #4f46e5); color: #fff; border: none; }
+.btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.btn-gh { background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border); }
+.btn-gh:hover { border-color: #fff; transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 36px; margin-top: 56px; flex-wrap: wrap;
+  justify-content: center; animation: fadeUp 0.5s ease 0.5s both;
+}
+.stat { text-align: center; }
+.stat-val {
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-label { font-size: 0.62rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+
+/* SECTION */
+.section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 600; }
+.section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 44px; }
+.section-title span { color: var(--muted); }
+.divider { width: 100%; height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.skill-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.skill-icon { font-size: 1.6rem; margin-bottom: 10px; }
+.skill-name { font-size: 0.88rem; font-weight: 700; margin-bottom: 5px; }
+.skill-desc { font-size: 0.73rem; color: var(--muted); line-height: 1.6; }
+.skill-bar { margin-top: 14px; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.skill-bar-fill { height: 100%; border-radius: 2px; }
+.skill-status {
+  margin-top: 8px; font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
+.project-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex; flex-direction: column;
+}
+.project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.project-banner {
+  height: 6px;
+}
+.project-inner { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+.project-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.project-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.project-tag { font-size: 0.56rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; }
+.tag-forage  { background: rgba(99,102,241,0.12); color: var(--accent); }
+.tag-own     { background: rgba(16,185,129,0.12); color: var(--accent3); }
+.tag-classic { background: rgba(245,158,11,0.12); color: var(--yellow); }
+.project-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.project-desc { font-size: 0.77rem; color: var(--muted); line-height: 1.7; margin-bottom: 14px; flex: 1; }
+.project-tools { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+.tool { font-size: 0.6rem; font-weight: 600; padding: 3px 9px; border-radius: 5px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); }
+.project-highlights { display: flex; flex-direction: column; gap: 5px; }
+.ph { display: flex; align-items: flex-start; gap: 7px; font-size: 0.73rem; color: var(--muted); }
+.ph::before { content: '▸'; color: var(--accent); flex-shrink: 0; }
+
+/* CERTIFICATES */
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.cert-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px;
+  display: flex; align-items: flex-start; gap: 14px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.cert-card:hover { border-color: var(--accent3); transform: translateY(-3px); }
+.cert-logo { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.cert-name { font-size: 0.86rem; font-weight: 700; margin-bottom: 3px; }
+.cert-co { font-size: 0.7rem; color: var(--accent); font-weight: 600; margin-bottom: 3px; }
+.cert-date { font-size: 0.65rem; color: var(--muted); }
+.cert-badge { margin-top: 7px; display: inline-block; font-size: 0.56rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: rgba(16,185,129,0.1); color: var(--accent3); }
+
+/* CONTACT */
+.contact-wrap {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 24px; padding: 52px 40px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.contact-wrap::before {
+  content: ''; position: absolute;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.contact-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
+.contact-sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 32px; max-width: 400px; margin-left: auto; margin-right: auto; }
+.contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; position: relative; }
+.c-link {
+  display: flex; align-items: center; gap: 9px;
+  padding: 12px 20px; border-radius: 12px;
+  border: 1px solid var(--border); text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; color: var(--text);
+  background: var(--surface); transition: all 0.2s;
+}
+.c-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.c-link span { font-size: 1rem; }
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 28px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem; color: var(--muted);
+}
+footer strong { color: var(--accent); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+@media(max-width:768px) {
+  .nav-links { display: none; }
+  .hero-stats { gap: 20px; }
+  .contact-wrap { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">OA · Data Analyst</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-tag">✅ Available for Remote Opportunities</div>
+  <h1 class="hero-name">Oladapo<br><span>Abimbola</span></h1>
+  <div class="hero-title">Junior Data Analyst · Excel · Power Query · Data Visualisation</div>
+  <p class="hero-bio">
+    Passionate about turning raw data into meaningful insights. I build interactive dashboards, clean complex datasets, and uncover patterns that drive better decisions — using Excel, Power Query, and data visualisation tools.
+  </p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary">📊 View My Work</a>
+    <a href="https://github.com/BimbsyStats" target="_blank" class="btn btn-gh">🐙 GitHub</a>
+    <a href="#contact" class="btn btn-outline">✉️ Contact Me</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val">4</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-val">2</div><div class="stat-label">Certificates</div></div>
+    <div class="stat"><div class="stat-val">71K+</div><div class="stat-label">Records Analysed</div></div>
+    <div class="stat"><div class="stat-val">100%</div><div class="stat-label">Remote Ready</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-label">What I work with</div>
+  <div class="section-title">Skills & <span>Tools</span></div>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Microsoft Excel</div>
+      <div class="skill-desc">Pivot tables, advanced formulas, data cleaning, conditional formatting and dashboard building.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%;background:var(--accent3)"></div></div>
+      <div class="skill-status" style="color:var(--accent3)">Advanced</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">Power Query</div>
+      <div class="skill-desc">ETL processes, merging multiple datasets, data transformation and cleaning automation.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent3)"></div></div>
+      <div class="skill-status" style="color:var(--accent3)">Advanced</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">📈</div>
+      <div class="skill-name">Data Visualisation</div>
+      <div class="skill-desc">Interactive dashboards, Chart.js, Power BI style layouts, professional colour theory.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent2)"></div></div>
+      <div class="skill-status" style="color:var(--accent2)">Advanced</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">Data Analysis</div>
+      <div class="skill-desc">Identifying trends, patterns and outliers. Turning numbers into actionable business insights.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:78%;background:var(--accent)"></div></div>
+      <div class="skill-status" style="color:var(--accent)">Proficient</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">SQL</div>
+      <div class="skill-desc">Currently learning — querying databases, filtering, grouping and joining tables.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:30%;background:var(--yellow)"></div></div>
+      <div class="skill-status" style="color:var(--yellow)">Learning</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🎯</div>
+      <div class="skill-name">Operations Analytics</div>
+      <div class="skill-desc">Transaction monitoring, expense tracking, process improvement and financial reporting.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:75%;background:var(--accent)"></div></div>
+      <div class="skill-status" style="color:var(--accent)">Proficient</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="section-label">What I've built</div>
+  <div class="section-title">Featured <span>Projects</span></div>
+  <div class="projects-grid">
+
+    <!-- Project 1: Attendance -->
+    <div class="project-card">
+      <div class="project-banner" style="background:linear-gradient(90deg,var(--accent3),var(--accent2))"></div>
+      <div class="project-inner">
+        <div class="project-top">
+          <div class="project-icon" style="background:rgba(16,185,129,0.12)">📋</div>
+          <span class="project-tag tag-own">Own Project</span>
+        </div>
+        <div class="project-title">Attendance Analytics Dashboard</div>
+        <div class="project-desc">Analysed 2 years of workforce attendance data across 100 employees and 477 working days. Built an interactive Power BI-style dashboard revealing late arrival patterns, employee rankings and weekday trends.</div>
+        <div class="project-tools">
+          <span class="tool">Excel</span>
+          <span class="tool">Power Query</span>
+          <span class="tool">Chart.js</span>
+          <span class="tool">HTML/CSS</span>
+          <span class="tool">Pivot Tables</span>
+        </div>
+        <div class="project-highlights">
+          <div class="ph">71,200 records cleaned and analysed</div>
+          <div class="ph">54.7% late rate identified across 2 years</div>
+          <div class="ph">2 employees with perfect attendance found</div>
+          <div class="ph">Interactive dashboard with 6 chart types</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: Titanic -->
+    <div class="project-card">
+      <div class="project-banner" style="background:linear-gradient(90deg,var(--yellow),#f97316)"></div>
+      <div class="project-inner">
+        <div class="project-top">
+          <div class="project-icon" style="background:rgba(245,158,11,0.12)">🚢</div>
+          <span class="project-tag tag-classic">Classic Dataset</span>
+        </div>
+        <div class="project-title">Titanic Survival Analysis</div>
+        <div class="project-desc">Explored the famous Titanic dataset to uncover survival patterns based on passenger class, gender, age and fare. Produced visualisations showing key factors that influenced survival rates.</div>
+        <div class="project-tools">
+          <span class="tool">Excel</span>
+          <span class="tool">Power Query</span>
+          <span class="tool">Data Cleaning</span>
+          <span class="tool">Visualisation</span>
+        </div>
+        <div class="project-highlights">
+          <div class="ph">891 passenger records analysed</div>
+          <div class="ph">Survival rate breakdown by class & gender</div>
+          <div class="ph">Missing data handled and cleaned</div>
+          <div class="ph">Key insights visualised in dashboard</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: BCG -->
+    <div class="project-card">
+      <div class="project-banner" style="background:linear-gradient(90deg,var(--accent),#8b5cf6)"></div>
+      <div class="project-inner">
+        <div class="project-top">
+          <div class="project-icon" style="background:rgba(99,102,241,0.12)">🏢</div>
+          <span class="project-tag tag-forage">Forage · BCG</span>
+        </div>
+        <div class="project-title">BCG Data Science & Analytics</div>
+        <div class="project-desc">Completed Boston Consulting Group's virtual experience program, tackling real-world data science problems. Applied analytical frameworks to generate business insights and strategic recommendations.</div>
+        <div class="project-tools">
+          <span class="tool">Data Analysis</span>
+          <span class="tool">Problem Solving</span>
+          <span class="tool">Business Insights</span>
+        </div>
+        <div class="project-highlights">
+          <div class="ph">Real BCG business case analysis</div>
+          <div class="ph">Data-driven strategic recommendations</div>
+          <div class="ph">Certificate awarded by BCG</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4: Goldman Sachs -->
+    <div class="project-card">
+      <div class="project-banner" style="background:linear-gradient(90deg,#64748b,#94a3b8)"></div>
+      <div class="project-inner">
+        <div class="project-top">
+          <div class="project-icon" style="background:rgba(100,116,139,0.12)">🏦</div>
+          <span class="project-tag tag-forage">Forage · Goldman Sachs</span>
+        </div>
+        <div class="project-title">Goldman Sachs Operations</div>
+        <div class="project-desc">Completed Goldman Sachs Wealth Management Operations virtual simulation. Applied operational management skills including transaction planning, expense tracking, process improvement and banking reconciliation.</div>
+        <div class="project-tools">
+          <span class="tool">Operations Management</span>
+          <span class="tool">Transaction Analysis</span>
+          <span class="tool">Process Improvement</span>
+          <span class="tool">Excel</span>
+        </div>
+        <div class="project-highlights">
+          <div class="ph">Personal Transaction Plan completed</div>
+          <div class="ph">Banking process review & reconciliation</div>
+          <div class="ph">Inefficiencies identified & resolved</div>
+          <div class="ph">Certificate awarded by Goldman Sachs</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATES -->
+<div class="section" id="certificates">
+  <div class="section-label">My credentials</div>
+  <div class="section-title">Certificates & <span>Achievements</span></div>
+  <div class="certs-grid">
+
+    <div class="cert-card">
+      <div class="cert-logo" style="background:rgba(99,102,241,0.1)">🏢</div>
+      <div>
+        <div class="cert-name">Data Science & Analytics</div>
+        <div class="cert-co">Boston Consulting Group (BCG)</div>
+        <div class="cert-date">Completed via Theforage.com · 2026</div>
+        <div class="cert-badge">✅ Verified</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-logo" style="background:rgba(100,116,139,0.1)">🏦</div>
+      <div>
+        <div class="cert-name">Operations — Wealth Management</div>
+        <div class="cert-co">Goldman Sachs</div>
+        <div class="cert-date">Completed via Theforage.com · 2026</div>
+        <div class="cert-badge">✅ Verified</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <div class="contact-wrap">
+    <div class="contact-title">Let's Work Together 🚀</div>
+    <p class="contact-sub">I'm open to remote data analyst roles, freelance projects and collaborations. Feel free to reach out!</p>
+    <div class="contact-links">
+      <a href="mailto:abimbolaprimp2@gmail.com" class="c-link">
+        <span>📧</span> abimbolaprimp2@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/oladapo-abimbola-data" target="_blank" class="c-link">
+        <span>💼</span> LinkedIn Profile
+      </a>
+      <a href="https://github.com/BimbsyStats" target="_blank" class="c-link">
+        <span>🐙</span> github.com/BimbsyStats
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Built with ❤️ by <strong>Oladapo Abimbola</strong> · Junior Data Analyst · 2026
+</footer>
+
+</body>
+</html>
